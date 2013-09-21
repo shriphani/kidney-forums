@@ -10,4 +10,4 @@
                  [org.clojure/tools.cli "0.2.4"]
                  [org.clojure/data.json "0.2.3"]
                  [org.clojars.shriphani/warc-clojure "0.2.3-SNAPSHOT"]]
-  :main kidney-forums.index)
+  :main kidney-forums.index-pages)
