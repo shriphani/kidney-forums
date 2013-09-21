@@ -11,6 +11,7 @@
       [[_ [warcs-dir] _] (cli/cli args)]
 
     (doseq [warc-file (filter
-                       #(re-find #".warc" (.getAbsolutePath %))
+                       #(and (re-find #".warc" (.getAbsolutePath %))
+                             (not (re-find #"latest" (.getAbsolutePath %))))
                        (file-seq (java.io.File. warcs-dir)))]
       (println warc-file))))
