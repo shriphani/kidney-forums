@@ -8,7 +8,7 @@
 
 (defn get-post-pages
   [warc-file]
-  (doseq [record (warc/skip-get-response-records-seq
+  (doseq [record (warc/get-response-records-seq
                   (warc/get-warc-reader warc-file))]
     (filter
      identity
