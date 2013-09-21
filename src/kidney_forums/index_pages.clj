@@ -12,5 +12,5 @@
 
     (doseq [warc-file (filter
                        #(re-find #".warc" (.getAbsolutePath %))
-                       (file-seq warcs-dir))]
+                       (file-seq (java.io.File. warcs-dir)))]
       (println warc-file))))
