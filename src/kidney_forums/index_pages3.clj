@@ -1,6 +1,6 @@
 ;;;; Soli Deo Gloria
 
-(ns kidney-forums.index-pages
+(ns kidney-forums.index-pages3
   (:gen-class :main true)
   (:require [warc-clojure.core :as warc]
             [clojure.tools.cli :as cli]
@@ -14,10 +14,8 @@
     (doseq [link (distinct
                   (filter
                    #(and %
-                         (re-find #"showthread.php" %)
-                         (not (re-find #"goto=newpost" %))
-                         (not (re-find #"#post\d+" %))
-                         (not (re-find #"/page\d+" %)))
+                         (not (re-find #"\&p=" %))
+                         (re-find #"f=27\&m=" %))
                    (map
                     #(-> %
                          :attrs
@@ -39,3 +37,4 @@
                              (not (re-find #"latest" (.getAbsolutePath %))))
                        (file-seq (java.io.File. warcs-dir)))]
       (get-post-pages warc-file))))
+
